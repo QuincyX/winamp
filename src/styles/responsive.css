@@ -1,0 +1,92 @@
+@media (max-width: 820px) {
+  .desktop__brand-sub,
+  .desktop__hint span:last-child,
+  .taskbar__date {
+    display: none;
+  }
+
+  .taskbar__task {
+    min-width: 40px;
+    padding: 0 7px;
+  }
+
+  .taskbar__task span {
+    display: none;
+  }
+
+  .desktop__brand {
+    left: 16px;
+    top: 12px;
+  }
+
+  .desktop__hint {
+    left: 16px;
+    bottom: 10px;
+    font-size: 8px;
+  }
+
+  .about-columns {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .about-hero {
+    grid-template-columns: 44px 1fr 44px;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .about-hero__logo,
+  .about-llama {
+    width: 44px;
+    height: 44px;
+  }
+
+  .about-hero__title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .taskbar__start span:last-child {
+    display: none;
+  }
+
+  .taskbar__start {
+    padding: 0 7px;
+  }
+
+  .taskbar__zoom {
+    display: none;
+  }
+
+  .desktop__brand-mark {
+    font-size: 13px;
+  }
+
+  .about-body {
+    padding: 12px;
+  }
+
+  .about-hero__tagline {
+    font-size: 10px;
+  }
+
+  .about-actions {
+    flex-direction: column-reverse;
+  }
+
+  .about-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

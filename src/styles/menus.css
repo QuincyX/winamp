@@ -1,0 +1,97 @@
+.winamp-menu {
+  position: fixed;
+  z-index: 9000;
+  min-width: 172px;
+  max-width: min(380px, 92vw);
+  padding: 2px;
+  background: #d6d2c8;
+  border: 1px solid #000;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    inset -1px -1px 0 #7c7c79,
+    2px 2px 0 rgba(0, 0, 0, 0.4);
+  color: #000;
+  font-family: Tahoma, 'MS Sans Serif', 'Microsoft YaHei', sans-serif;
+  font-size: 11px;
+  line-height: 16px;
+  user-select: none;
+}
+
+.winamp-menu__header {
+  margin: -2px -2px 2px;
+  padding: 3px 7px;
+  background: linear-gradient(90deg, #00005f 0%, #0b2f8c 40%, #1473c8 100%);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+}
+
+.winamp-menu__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 16px 0 4px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.winamp-menu__item:hover,
+.winamp-menu__item.is-open {
+  background: #000080;
+  color: #fff;
+}
+
+.winamp-menu__item.is-disabled {
+  color: #8a8a85;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.winamp-menu__item.is-disabled:hover {
+  background: transparent;
+  color: #8a8a85;
+}
+
+.winamp-menu__check {
+  flex: none;
+  width: 14px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.winamp-menu__label {
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.winamp-menu__shortcut {
+  flex: none;
+  margin-left: auto;
+  padding-left: 28px;
+  font-size: 10px;
+  color: #4b4b48;
+}
+
+.winamp-menu__item:hover .winamp-menu__shortcut,
+.winamp-menu__item.is-open .winamp-menu__shortcut {
+  color: #dfe6ff;
+}
+
+.winamp-menu__arrow {
+  flex: none;
+  width: 12px;
+  margin-left: auto;
+  text-align: right;
+  font-size: 10px;
+  padding-left: 16px;
+}
+
+.winamp-menu__separator {
+  height: 2px;
+  margin: 3px 2px;
+  border-top: 1px solid #86867f;
+  border-bottom: 1px solid #fff;
+}

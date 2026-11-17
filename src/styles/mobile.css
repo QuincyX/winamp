@@ -1,0 +1,269 @@
+/* --------------------------------------------------------------------------
+   Mobile shell: a vertical Winamp stack (main → equalizer → playlist) under a
+   compact now-playing header. The whole stack scrolls; there is no tab bar.
+   -------------------------------------------------------------------------- */
+
+.mobile-desktop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 112%, rgba(35, 118, 165, 0.26), transparent 62%),
+    radial-gradient(ellipse at 0% 0%, rgba(44, 93, 150, 0.2), transparent 55%),
+    linear-gradient(180deg, #04070f 0%, #071226 50%, #050b16 100%);
+  color: #d8d8d8;
+  overscroll-behavior: none;
+}
+
+.mobile-desktop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.015) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+/* --------------------------------------------------------------- header */
+
+.mobile-header {
+  position: relative;
+  z-index: 3;
+  flex: none;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(6px + env(safe-area-inset-top, 0px)) 12px 6px;
+  background: linear-gradient(180deg, #101b2c 0%, #080f1a 100%);
+  border-bottom: 1px solid rgba(221, 205, 126, 0.26);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  user-select: none;
+}
+
+.mobile-header__brand {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 4px 2px;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #e3c95a;
+  text-shadow: 0 1px 0 #000;
+  touch-action: manipulation;
+}
+
+.mobile-header__brand:active {
+  opacity: 0.65;
+}
+
+.mobile-header__brand svg {
+  width: 11px;
+  height: 13px;
+  fill: currentColor;
+  filter: drop-shadow(0 1px 0 #000);
+}
+
+.mobile-header__brand em {
+  font-style: normal;
+  font-size: 8px;
+  letter-spacing: 0;
+  color: #8e834f;
+}
+
+.mobile-header__status {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #353b4b;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.mobile-header__status--playing {
+  background: #3dff54;
+  box-shadow: 0 0 6px rgba(61, 255, 84, 0.9);
+}
+
+.mobile-header__status--paused {
+  background: #ffd54a;
+  box-shadow: 0 0 6px rgba(255, 213, 74, 0.8);
+}
+
+.mobile-header__track {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: #7ee08a;
+  letter-spacing: 0.3px;
+}
+
+.mobile-header__play,
+.mobile-header__about {
+  flex: none;
+  width: 34px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #30384c;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #2d374e 0%, #1a2233 55%, #0d1420 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: #e3c95a;
+}
+
+.mobile-header__play:active,
+.mobile-header__about:active {
+  background: linear-gradient(180deg, #111a28 0%, #263248 100%);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-header__play svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.mobile-header__about {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ------------------------------------------------------- docked window stack */
+
+.mobile-stack-scroll {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 8px 12px calc(14px + env(safe-area-inset-bottom, 0px));
+  scrollbar-width: none;
+}
+
+.mobile-stack-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-window-slot {
+  position: relative;
+  flex: none;
+  margin: 0 auto;
+}
+
+/* The windows are docked: 2px keeps the bevels readable on a phone. */
+.mobile-window-slot + .mobile-window-slot {
+  margin-top: 2px;
+}
+
+.mobile-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+
+.mobile-stage > .winamp-window {
+  left: 0 !important;
+  top: 0 !important;
+}
+
+.mobile-stage .title-bar {
+  touch-action: manipulation;
+}
+
+.mobile-stage .title-bar__button--close,
+.mobile-stage .title-bar__button--minimize,
+.mobile-stage .playlist-resize {
+  display: none;
+}
+
+.mobile-stage .title-bar__buttons {
+  top: 0;
+  right: 2px;
+  gap: 2px;
+}
+
+.mobile-stage .title-bar__button {
+  width: 14px;
+  height: 14px;
+}
+
+.mobile-stage .title-bar__button svg {
+  width: 9px;
+  height: 9px;
+}
+
+/* The mobile stack uses the same compact rows as the desktop playlist so all
+   three windows keep one shared scale, just like the reference skin. */
+
+/* --------------------------------------------------------- menus / about */
+
+@media (max-width: 760px) {
+  .winamp-menu {
+    min-width: 200px;
+    max-height: calc(100dvh - 16px);
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .winamp-menu__header {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .winamp-menu__item {
+    height: 30px;
+    padding-right: 20px;
+  }
+
+  .winamp-menu__shortcut {
+    padding-left: 16px;
+    font-size: 10px;
+  }
+
+  .winamp-menu__separator {
+    margin: 4px 2px;
+  }
+
+  .about-overlay {
+    padding: 8px;
+  }
+
+  .about-dialog {
+    max-height: calc(100dvh - 16px);
+  }
+
+  .about-body {
+    padding: 14px;
+  }
+}

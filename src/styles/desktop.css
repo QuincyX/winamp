@@ -1,0 +1,163 @@
+.desktop {
+  position: absolute;
+  inset: 0 0 var(--taskbar-height) 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 118%, rgba(35, 118, 165, 0.28), transparent 60%),
+    radial-gradient(ellipse at 12% 0%, rgba(44, 93, 150, 0.22), transparent 55%),
+    linear-gradient(180deg, #04070f 0%, #071226 45%, #050b16 100%);
+}
+
+.desktop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.016) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+.desktop__wallpaper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.desktop__glow {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+.desktop__glow--one {
+  left: -12vw;
+  top: -18vw;
+  width: 62vw;
+  height: 46vw;
+  background: radial-gradient(circle, rgba(28, 91, 145, 0.55), transparent 66%);
+}
+
+.desktop__glow--two {
+  right: -14vw;
+  bottom: -16vw;
+  width: 54vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(19, 106, 100, 0.32), transparent 66%);
+}
+
+.desktop__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(126, 180, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 180, 240, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, #000 15%, transparent 78%);
+}
+
+.desktop__brand {
+  position: absolute;
+  left: 26px;
+  top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.desktop__brand-mark {
+  font-family: var(--font-pixel);
+  font-size: 18px;
+  letter-spacing: 2.5px;
+  color: rgba(213, 228, 255, 0.5);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+}
+
+.desktop__brand-sub {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  color: rgba(141, 176, 219, 0.4);
+}
+
+.desktop__hint {
+  position: absolute;
+  left: 26px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  letter-spacing: 0.6px;
+  color: rgba(137, 178, 216, 0.42);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stage-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage {
+  position: relative;
+  flex: none;
+  transform-origin: center center;
+}
+
+.drop-overlay {
+  position: fixed;
+  inset: 0 0 var(--taskbar-height) 0;
+  z-index: 9200;
+  display: grid;
+  place-items: center;
+  background: rgba(2, 8, 14, 0.62);
+  pointer-events: none;
+}
+
+.drop-overlay__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 34px 54px;
+  border: 2px dashed rgba(224, 203, 112, 0.85);
+  background: rgba(6, 14, 24, 0.82);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(224, 203, 112, 0.18),
+    inset 0 0 40px rgba(80, 150, 180, 0.08);
+  text-align: center;
+}
+
+.drop-overlay__title {
+  font-family: var(--font-pixel);
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #e7d77f;
+  text-shadow: 0 2px 0 #000;
+}
+
+.drop-overlay__subtitle {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #6fe58a;
+}
+
+.drop-overlay__hint {
+  font-size: 12px;
+  color: #9fb7c9;
+}

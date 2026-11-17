@@ -1,0 +1,191 @@
+.winamp-window {
+  position: absolute;
+  border: 1px solid #030309;
+  background:
+    radial-gradient(ellipse 80% 60% at 22% 12%, rgba(255, 255, 255, 0.07), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 78% 88%, rgba(110, 130, 235, 0.09), transparent 65%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 2px),
+    linear-gradient(155deg, #454663 0%, #3a3b55 38%, #30314a 65%, #3e3f5c 100%);
+  box-shadow:
+    inset 0 0 0 1px #7b7e97,
+    inset 0 0 0 2px #16172a,
+    inset 0 0 0 3px rgba(255, 255, 255, 0.03),
+    0 18px 42px rgba(0, 0, 0, 0.62),
+    0 2px 0 rgba(0, 0, 0, 0.35);
+  color: #ddd;
+  user-select: none;
+  isolation: isolate;
+}
+
+.winamp-window.is-focused {
+  box-shadow:
+    inset 0 0 0 1px #8b8fa9,
+    inset 0 0 0 2px #17182c,
+    inset 0 0 0 3px rgba(255, 255, 255, 0.04),
+    0 22px 50px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 226, 138, 0.12);
+}
+
+.title-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #9aa2b3 0%, #656d80 9%, #41485b 38%, #2c3243 55%, #3d4456 86%, #202533 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+    0 1px 0 rgba(0, 0, 0, 0.6);
+  cursor: default;
+}
+
+.winamp-window.is-inactive .title-bar {
+  background:
+    linear-gradient(180deg, #71798a 0%, #4d5463 10%, #353b4a 45%, #282d3b 60%, #343a48 90%, #1b1f2a 100%);
+}
+
+.title-bar__logo {
+  width: 17px;
+  height: 14px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  margin-left: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #e3c95a;
+  filter: drop-shadow(0 1px 0 #000);
+}
+
+.title-bar__logo svg {
+  width: 11px;
+  height: 9px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.title-bar__logo:hover {
+  color: #ffe98a;
+  filter: drop-shadow(0 0 4px rgba(255, 225, 110, 0.6)) drop-shadow(0 1px 0 #000);
+}
+
+.title-bar__rule {
+  flex: 1 1 auto;
+  height: 3px;
+  min-width: 6px;
+  margin: 0 5px;
+  background:
+    linear-gradient(
+      180deg,
+      #ece0a0 0,
+      #b7a553 1px,
+      rgba(30, 26, 10, 0.7) 1px,
+      rgba(30, 26, 10, 0.7) 2px,
+      #c7b45e 2px,
+      #7c6d31 3px
+    );
+  opacity: 0.9;
+}
+
+.winamp-window.is-inactive .title-bar__rule {
+  opacity: 0.42;
+  filter: saturate(0.55);
+}
+
+.title-bar__title {
+  flex: 0 1 auto;
+  max-width: 62%;
+  overflow: hidden;
+  padding: 0 3px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  line-height: 14px;
+  color: #f0ecdb;
+  text-shadow:
+    1px 1px 0 #000,
+    0 0 3px rgba(0, 0, 0, 0.8);
+}
+
+.winamp-window.is-inactive .title-bar__title {
+  color: #aaa79a;
+}
+
+.title-bar.is-llama .title-bar__title {
+  color: #f0d872;
+  font-size: 8px;
+  letter-spacing: 0.2px;
+}
+
+.title-bar__buttons {
+  position: absolute;
+  right: 2px;
+  top: 3px;
+  z-index: 2;
+  display: flex;
+  gap: 1px;
+}
+
+.title-bar__button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #15161f;
+  border-radius: 0;
+  background: linear-gradient(180deg, #d9dde4 0%, #a6acb8 38%, #767c8c 62%, #3c4150 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+  color: #14151c;
+}
+
+.title-bar__button svg {
+  width: 7px;
+  height: 7px;
+}
+
+.title-bar__button:active {
+  background: linear-gradient(180deg, #5a5f6d 0%, #767c8a 55%, #3c4150 100%);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.winamp-window.is-inactive .title-bar__button {
+  filter: saturate(0.3) brightness(0.85);
+}
+
+.title-bar--playlist {
+  height: 20px;
+  background:
+    linear-gradient(180deg, #a2aab9 0%, #6a7284 8%, #464d5f 36%, #2f3545 56%, #42495a 86%, #232837 100%);
+}
+
+.title-bar--playlist .title-bar__title {
+  font-size: 10px;
+  line-height: 20px;
+  letter-spacing: 1.2px;
+}
+
+.title-bar__shade-content {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  padding: 0 2px;
+}
+

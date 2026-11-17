@@ -1,0 +1,81 @@
+:root {
+  --font-ui: Tahoma, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  --font-pixel: 'Tiny5', 'Tahoma', 'Microsoft YaHei', monospace;
+  --font-led: 'DSEG7 Classic', 'Tiny5', monospace;
+
+  --taskbar-height: 30px;
+
+  --win-hi: #7d8099;
+  --win-mid: #4a4b6b;
+  --win-low: #24243c;
+  --win-shadow: #08080f;
+
+  --gold: #ddcd7e;
+  --gold-dim: #8e844d;
+
+  --led-green: #36ff45;
+  --led-green-soft: #22d431;
+  --lcd: #010603;
+
+  --metal-top: #e3e7ee;
+  --metal-upper: #b3b9c5;
+  --metal-mid: #858b9b;
+  --metal-low: #565b6c;
+  --metal-bottom: #33374a;
+  --metal-border: #10111a;
+
+  --pl-green: #33dd3d;
+  --select-blue: #000082;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #05080f;
+  color: #d8d8d8;
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+[role='slider']:focus-visible,
+[role='button']:focus-visible {
+  outline: 1px solid #ffe98a;
+  outline-offset: 1px;
+}
+
+svg {
+  display: block;
+}
+
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.hidden-input,
+.audio-engine {
+  display: none;
+}
+
+.app {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.shots/
+.edge-profile*/
+__pycache__/
+*.local
+.DS_Store
+Thumbs.db
