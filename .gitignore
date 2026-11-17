@@ -1,3 +1,7 @@
+# Local-only copyrighted media (never commit)
+public/music/
+public/lyrics/
+
 node_modules/
 dist/
 .shots/
